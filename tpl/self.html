@@ -1,0 +1,74 @@
+<ion-view title="个人中心" hide-back-button="true">
+    <!--<ion-header-bar>
+        <h1 class="title">个人中心</h1>
+    </ion-header-bar>-->
+    <ion-content style="background: #f1f1f1;" has-bouncing="false">
+        <div class="main">
+            <div class="my-self">
+                <div class="headerImg-up">
+                    <div class="list">
+                        <a  href="#/myfile" class="item item-thumbnail-left item-icon-right" >
+                            <img ng-src="{{imgsUrl}}">
+                            <p class="line-height" >{{userName}}</p>
+                            <i class="icon ion-ios-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="list">
+                    <a href="javascript:;" class="item item-icon-right" ng-click="geSelfNumber()">
+                        <i></i>
+                        <span>个人数据资产</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a href="javascript:" class="item item-icon-right" ng-click="goManage()">
+                        <i class="myManage"></i>
+                        <span>我的事项</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a href="#/On-line" class="item item-icon-right">
+                        <i class="people"></i>
+                        <span>在线咨询</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="list">
+                    <!--<a href="#/collection/2" class="item item-icon-right">
+                        <i class="collect"></i>
+                        <span>我的收藏</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>-->
+                    <!--<a href="#/collection/2" class="item item-icon-right">
+                        <i class="collect"></i>
+                        <span>我的事项</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>-->
+                    <a href="#/about" class="item item-icon-right">
+                        <i class="abouts"></i>
+                        <span>关于</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar>
+        <div class="bar bar-footer">
+            <div class="tabs tabs-stable tabs-icon-top" style="margin-left: -5px;">
+                <a class="tab-item  " ng-click="toIndex()">
+                    <i class="icon ion-ios-filing-outline"></i>首页
+                </a>
+                <a class="tab-item" ng-click="toPublicService()">
+                    <i class="icon ion-ios-clock-outline"></i>政务办事
+                </a>
+                <!--<a class="tab-item" href="#/peopleService">
+                    <i class="icon ion-ios-gear-outline" ></i>民生服务
+                </a>-->
+                <a class="tab-item active" ng-click="toMySelf()">
+                    <i class="icon ion-ios-cloud"></i>个人中心
+                </a>
+            </div>
+        </div>
+    </ion-footer-bar>
+
+</ion-view>

@@ -1,0 +1,295 @@
+<!--残疾人生活津贴审批-->
+<li style="padding: 0 0 0 16px;">
+    <h4 class="blue">业务表单信息</h4>
+</li>
+
+<li>
+    <label class="item item-input" >
+        <span class="input-label" style="max-width: 100px;">*名字：</span>
+        <input type="text" name="spouseUser" ng-pattern="/^[\u4E00-\u9FA5A-Za-z]+$/" required ng-maxlength="15" ng-minlength="2" ng-model="table.spouseUser" placeholder="请输入姓名！">
+    </label>
+</li>
+<!--<li>
+    <div ng-if="registerForm.spouseUser.$touched">
+        <div class="verify" ng-show="registerForm.spouseUser.$error.maxlength">*不能大于15个字符</div>
+        <div class="verify" ng-show="registerForm.spouseUser.$error.minlength||registerForm.spouseUser.$error.required" ng-if="!(registerForm.spouseUser.$error.pattern)">*不能少于2个字符</div>
+        <div class="verify" ng-show="registerForm.spouseUser.$error.pattern">*只能输入中文或者英文的姓名</div>
+    </div>
+    <div class="verify" ng-show="registerForm.userNames.$error.required && registerForm.userNames.$dirty">不能为空</div>
+</li>-->
+
+<ion-list>
+    <ion-radio name="marriage" ng-model="table.gender" value="男">男</ion-radio>
+    <ion-radio name="marriage" ng-model="table.gender" value="女">女</ion-radio>
+</ion-list>
+
+<li style="margin-top: 15px">
+    <label class="item item-input">
+        <span class="input-label" style="max-width: 100px;">*出生年月：</span>
+        <input type="tel" name="marrData" ng-model="table.marrData" placeholder="格式：yyyy/mm" ng-value="validedTime | date:'yyyy/MM/dd'" ng-click="openDatePicker()">
+    </label>
+</li>
+
+<li class="item shouli" style="padding: 0;">
+    <div style="padding: 10px 0px 10px 16px;">*残疾类别：</div>
+    <div class="item item-input item-select "  data-tap-disabled='true'>
+        <div class="input-label" style="visibility: hidden">
+            *：
+        </div>
+        <select  ng-model="table.handicappeds" class="selects itemselects">
+            <option value="" selected>请选择</option>
+            <option value="视力残疾" >视力残疾</option>
+            <option value="言语残疾" >言语残疾</option>
+            <option value="听力语言残疾">听力语言残疾</option>
+            <option value="智力残疾" >智力残疾</option>
+            <option value="肢体残疾" >肢体残疾</option>
+            <option value="精神残疾" >精神残疾</option>
+            <option value="多重残疾" >多重残疾</option>
+        </select>
+    </div>
+</li>
+
+<li class="item" style="padding: 0;">
+    <label class="item item-input" >
+        <span class="input-label" style="max-width: 100px;">*残疾人证号：</span>
+        <input type="tel" required name="cappedCode" ng-pattern="/^[0-9]+$/" maxlength="20" ng-model="table.cappedCode" placeholder="请输入20位残疾人证号！">
+    </label>
+</li>
+<!--
+<li class="verify"  ng-show="registerForm.cappedCode.$error.required && registerForm.cappedCode.$dirty">内容不能为空！</li>
+<li class="verify"  ng-show="registerForm.cappedCode.$error.maxlength">不能超出20位编号！</li>
+<li class="verify"  ng-show="registerForm.cappedCode.$error.pattern">内容不能包含非法字符！</li>
+-->
+
+
+<li class="item " style="padding: 0;">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">*文化程度：</span>
+        <input type="text" name="health" ng-maxlength="20" ng-pattern="/^([\u4E00-\u9FA5])+$/" ng-model="table.health" placeholder="文化程度">
+    </label>
+</li>
+
+<!--<li ng-if="registerForm.health.$touched">
+    <div class="verify" ng-show="registerForm.health.$error.pattern">
+        *内容不能包含非法字符！
+    </div>
+    <div class="verify" ng-show="registerForm.health.$error.maxlength">
+        *不能超过20个字
+    </div>
+</li>-->
+
+<li class="item " style="padding: 0;">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">* 有何特长或技能：</span>
+        <input type="text" name="relation" ng-maxlength="60" ng-pattern="/^([\u4E00-\u9FA5])+$/" ng-model="table.relation" placeholder="请输入特长或技能">
+    </label>
+</li>
+<!--<li ng-if="registerForm.relation.$touched">
+    <div class="verify" ng-show="registerForm.relation.$error.pattern">
+        *内容不能包含非法字符！
+    </div>
+    <div class="verify" ng-show="registerForm.relation.$error.maxlength">
+        *不能超过60个字
+    </div>
+</li>-->
+
+<li class="item " style="padding: 0;">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">*将来就业意向：</span>
+        <input type="text" name="workjob" ng-maxlength="60" ng-pattern="/^([\u4E00-\u9FA5])+$/" ng-model="table.workjob" placeholder="请输入将来就业意向">
+    </label>
+</li>
+<!--<li ng-if="registerForm.workjob.$touched">
+    <div class="verify" ng-show="registerForm.workjob.$error.pattern">
+        *内容不能包含非法字符！
+    </div>
+    <div class="verify" ng-show="registerForm.workjob.$error.maxlength">
+        *不能超过60个字
+    </div>
+</li>-->
+
+<li class="item" style="padding: 0;">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">*家庭住址：</span>
+        <input type="text" name="oldcurityAdd" ng-minlength="5" required ng-maxlength="60" ng-pattern="/^[A-Za-z0-9]|[\u4E00-\u9FA5]+$/"  ng-model="table.oldsecurityAddr" placeholder="请输入至少5位地址">
+    </label>
+</li>
+<!--<li>
+    <div ng-if="registerForm.oldcurityAdd.$touched">
+        <div class="verify" ng-show="registerForm.oldcurityAdd.$error.pattern">
+            *不能存在非法字符，请重新输入！
+        </div>
+        <div class="verify" ng-if="!(registerForm.oldcurityAdd.$error.pattern)" ng-show="registerForm.oldcurityAdd.$error.minlength || registerForm.oldcurityAdd.$error.required" >
+            *地址最少5个字！
+        </div>
+        <div class="verify" ng-show="registerForm.oldcurityAdd.$error.maxlength">
+            *地址最多不能超过60个字！
+        </div>
+    </div>
+</li>-->
+
+<li>
+    <label class="item item-input">
+        <span class="input-label" style="max-width: 100px;">*联系电话：</span>
+        <input type="tel" name="marrPhone" ng-minlength="11" ng-maxlength="11"  ng-pattern="/^1[34578]\d{9}$/" required ng-model="table.marrPhone" placeholder="请输入联系电话！">
+    </label>
+</li>
+<!--
+<li class="verify"  ng-show="registerForm.marrPhone.$invalid && registerForm.marrPhone.$dirty">格式有误！</li>
+-->
+
+
+
+<li class="item" style="padding: 0;">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label" style="max-width: 100px;">所属街道、居委：</span>
+        <input type="text" name="letOut" ng-maxlength="60" ng-minlength="5" ng-pattern="/^([0-9]|[\u4E00-\u9FA5])+$/"  ng-model="table.letOut" placeholder="请输入所属街道、居委！">
+    </label>
+</li>
+<!--<li ng-if="registerForm.letOut.$touched">
+    <div class="verify" ng-show="registerForm.letOut.$error.pattern">
+        *内容不能包含非法字符！
+    </div>
+    <div class="verify" ng-if="!(registerForm.letOut.$error.pattern)" ng-show="registerForm.letOut.$error.required" >
+        *不能为空！
+    </div>
+    <div class="verify" ng-show="registerForm.letOut.$error.maxlength">
+        *不能超过20个字
+    </div>
+</li>-->
+
+<li class="item " style="padding: 0;">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">主要工作经历：</span>
+        <input type="text" name="WorkName" ng-maxlength="20" required ng-pattern="/^([\u4E00-\u9FA5])+$/" ng-model="table.WorkName" placeholder="请输入主要工作经历">
+    </label>
+</li>
+<!--<li ng-if="registerForm.WorkName.$touched">
+    <div class="verify" ng-show="registerForm.WorkName.$error.pattern">
+        *内容不能包含非法字符！
+    </div>
+    <div class="verify" ng-if="!(registerForm.WorkName.$error.pattern)" ng-show="registerForm.WorkName.$error.required" >
+        *不能为空！
+    </div>
+    <div class="verify" ng-show="registerForm.WorkName.$error.maxlength">
+        *不能超过20个字
+    </div>
+</li>-->
+
+<li class="item" style="border: none;margin-top:15px;">
+    <span>参加班别：</span>
+</li>
+<ion-list>
+    <ion-radio name="issame" ng-model="table.issame" value="夜晚班">夜晚班</ion-radio>
+    <ion-radio name="issame" ng-model="table.issame" value="白天班">白天班</ion-radio>
+</ion-list>
+
+
+<li class="item shouli" style="padding: 0;">
+    <div style="padding: 10px 0px 10px 16px;">*培训项目：</div>
+    <div class="item item-input item-select "  data-tap-disabled='true'>
+        <div class="input-label" style="visibility: hidden">
+            *：
+        </div>
+        <select  ng-model="table.items" class="selects itemselects">
+            <option value="" selected>请选择</option>
+            <option value="电子装配" >电子装配</option>
+            <option value="中式厨师" >中式厨师</option>
+            <option value="中式点心师">中式点心师</option>
+            <option value="车缝班" >车缝班</option>
+            <option value="服装纸样" >服装纸样</option>
+            <option value="初级制衣" >初级制衣</option>
+            <option value="胶花加工" >胶花加工</option>
+            <option value="机电插件操作" >机电插件操作</option>
+            <option value="机电配件组装" >机电配件组装</option>
+            <option value="服装设计" >服装设计</option>
+            <option value="营养配餐" >营养配餐</option>
+            <option value="电脑办公自动化" >电脑办公自动化</option>
+            <option value="电子商务" >电子商务</option>
+            <option value="家电维修" >家电维修</option>
+            <option value="烧腊" >烧腊</option>
+            <option value="汽车美容" >汽车美容</option>
+            <option value="甜品师" >甜品师</option>
+            <option value="西饼烘培班" >西饼烘培班</option>
+            <option value="美容美发" >美容美发</option>
+            <option value="插花" >插花</option>
+            <option value="初级电工" >初级电工</option>
+            <option value="电脑编程" >电脑编程</option>
+            <option value="广告设计" >广告设计</option>
+            <option value="电脑软件应用" >电脑软件应用</option>
+        </select>
+    </div>
+</li>
+
+<!--<ion-list>
+    <ion-radio name="items" ng-model="table.items"  value="">电子装配</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">中式厨师</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value=""></ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">车缝班</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">服装纸样</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">初级制衣</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">胶花加工</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">机电插件操作</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">机电配件组装</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">服装设计</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">营养配餐</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">电脑办公自动化</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">电子商务</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">家电维修</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">烧腊</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">汽车美容</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">甜品师</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">西饼烘培班</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">美容美发</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">插花</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">初级电工</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">电脑编程</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">广告设计</ion-radio>
+    <ion-radio name="items" ng-model="table.items"  value="">电脑软件应用</ion-radio>
+</ion-list>-->
+
+<li class="item " style="padding: 0;margin-top: 15px" ng-if="security">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">*其它你认为对你就业有帮助的培训项目：</span>
+        <input type="text" name="rityName" required ng-maxlength="60" ng-pattern="/^[\u4e00-\u9fa5]|[\（\）\《\》\——\；\，\。\,\.\“\”\<\>\！\?\？]+$/" ng-model="table.newsecurityName" placeholder="请输入其它你认为对你就业有帮助的培训项目">
+    </label>
+</li>
+<!--<li>
+    <div class="verify" ng-show="registerForm.rityName.$error.pattern">
+        *机构内容不能包含非法字符！
+    </div>
+    <div class="verify" ng-show="registerForm.rityName.$error.maxlength">
+        *内容不能超过60个字
+    </div>
+    <div class="verify" ng-show="registerForm.rityName.$error.required && registerForm.rityName.$dirty">
+        *内容不能为空！
+    </div>
+</li>-->
+
+<li class="item" style="padding: 0;border: none;margin-top: 10px">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">备注：</span>
+        <textarea name="textareas" required ng-pattern="/^([\u4e00-\u9fa5]|[\（\）\《\》\——\；\，\。\,\.\“\”\<\>\！\?\？])+$/" placeholder="备注" ng-minlength="2" ng-maxlength="120" rows="10" ng-model="table.textcontent"></textarea>
+    </label>
+</li>
+<!--<li>
+    <div ng-if="registerForm.textareas.$touched">
+        <div class="verify" ng-show="registerForm.textareas.$error.pattern">
+            *存在非法字符，请重新输入！
+        </div>
+        <div class="verify" ng-if="!(registerForm.textareas.$error.pattern)" ng-show="registerForm.textareas.$error.minlength||registerForm.textareas.$error.required">
+            *不能少于2字！
+        </div>
+        <div class="verify" ng-show="registerForm.textareas.$error.maxlength">
+            *不能多于120字！
+        </div>
+    </div>
+</li>-->
+
+<li class="btn" style="margin-top: 45px;padding-bottom: 10px;">
+    <a  class="button button-block btnBg" ng-click="disabilitiesr()"
+    >{{submit}}</a>
+    <a href="#/On-line" class="button button-block btnBg fff">在线咨询</a>
+</li>
+
+

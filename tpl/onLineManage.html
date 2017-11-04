@@ -1,0 +1,162 @@
+<ion-view title="在线办理">
+
+    <ion-content has-bouncing="false">
+        <div class="main">
+            <div class="onLineManage">
+                <form name="registerForm" novalidate >
+                    <ul class="list">
+                        <li class="item"><span class="ng-list">*事项名称：</span> {{itemName}}</li>
+                        <li class="item"><span class="ng-list">*用户名：</span>{{userName}} </li>
+                        <li class="item"><span class="ng-list">*身份证：</span>{{idCard}} </li>
+                        <li class="item"><span class="ng-list">*手机号：</span>{{mobile}}</li>
+
+                        <li class="item" style="border: none;margin-top: 10px;" ng-if="obj!=0">申请材料拍照上传</li>
+                        <li style="padding: 10px 0px 10px 16px;background-color: #fff" ng-if="obj!=0">
+                            个人数据资产中已有本事项办理所需材料中的 <a href="javascript:;"  style="color:#249CBE">{{imgTypeNum}}</a>个 <span ng-if="isHas">，请点击并 <a href="javascript:;" style="color:#249CBE" ng-click="getMattersImg()" >授权获取</a></span>
+                        </li>
+                        <li class="item magr" style="border: none;" ng-if="obj!=0">
+                            <div class="imgs" style="overflow:hidden;">
+                                <div class="up">
+                                    <div ng-repeat="item in obj" class="ditem">
+                                        <div class="item__content">
+                                            <ion-item ng-disabled="item.pdfUrl"  style='height: 100px;'  class="ionItem1"
+                                                      ngf-select="uploadFiles($files, $invalidFiles,$event ,$index)"  ng-model="data.file" name="file" ngf-max-size="9MB"
+                                                      ngf-pattern="'image/*'" ngf-multiple="false"  required ngf-model-invalid="errorFile">
+
+                                                <img class="headerImage imgClass" ng-if="!item.pdfUrl" classCode="{{item.classCode}}" certificateName="{{item.certificateName}}" data_imgUrls="" data_imgName="" data_type="{{item.imgType}}" data_mineType="" data_uploadTypes="{{item.uploadTypes}}" ngf-src="data.file || './imgs/img1.jpg'"
+                                                      ng-bind='url' ngf-thumbnail = "file ||'./imgs/img1.jpg' " >
+
+                                                <img class="headerImage imgClass"  ng-if="item.pdfUrl&&item.isPdf !=0" pdfUrl="{{item.pdfUrl}}"  classCode="{{item.classCode}}" certificateName="{{item.certificateName}}" data_imgName="{{item.imgName}}" data_type="{{item.imgType}}" data_mineType="{{item.mineType}}" data_uploadTypes="{{item.uploadType}}" data_imgUrls="{{item.pdfUrl}}" ngf-src="'./imgs/img_uploaded.png'">
+
+                                            </ion-item>
+                                            <!--<div class="pdfUrl" ng-if="item.isPdf" ng-show="item.pdfUrl">
+                                            </div>-->
+
+                                            <span class="certificateName" style="white-space: normal;">{{item.certificateName}}</span>
+                                            <button class='button button-small button-assertive' style="margin: 2px;" ng-if='item.certificateSampleImgUrl !=""' ng-click='showImg(item.certificateSampleImgUrl)'>样表</button>
+                                        </div>
+                                    </div>
+                                    <div class="ditem" ng-show="obj.length%2 != 0" style="visibility: hidden;min-height: 150px;">
+
+                                    </div>
+                                    <img ng-src="../{{imgSrc}}" alt="" style="top: 20%;z-index: 100;" ng-show='isshow' ng-click='isShow()'/>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item" style="border: none;" ng-if="isIncludeRe">
+                            <span>结果物送达方式（可多选）：</span>
+                        </li>
+                        <ion-list ng-if="isIncludeRe">
+                            <ion-checkbox ng-model="d.checkbox1" ng-disabled="isElectronic !=1">电子结果 </ion-checkbox>
+                            <ion-checkbox ng-model="d.checkbox2" ng-disabled="isPaper != 1" >纸质结果</ion-checkbox>
+                            <!--<ion-checkbox ng-model="d.checkbox3" ng-disabled="isCertificate !=1">证件</ion-checkbox>-->
+                        </ion-list>
+                        <!--<li style="margin: -5px 0 10px 15px;" ng-if="showfonts">
+                            <span style="color:red;">*制卡完成后请在收到领取通知后到户籍所在地（居住地）村（居）委领取老年人优待证，如您此次申领为黄卡且此前已申领蓝卡，请在领取黄卡时交回蓝卡。</span>
+                        </li>-->
+                        <li style="margin: -5px 0 10px 15px;" ng-if="isElectronic ==1">
+                            <span style="color:red;">*电子结果可在APP个人中心下载打印</span>
+                        </li>
+                        <li style="padding: 10px 0px 5px 16px;" ng-if="ispepers||ispepers2"  ng-show="isPaper||isCertificate">
+                            结果物领取 <span style="color: #0C73B5">（邮寄）</span>
+                        </li>
+                        <li style="padding: 10px 0px 10px 16px;" ng-if="ispepers||ispepers2"  ng-show="isPaper||isCertificate">
+                            说明：办理结果将通过EMS邮递给您（免邮费）
+                        </li>
+                        <li class="item" style="padding: 0;" ng-if="ispepers||ispepers2" ng-show="isPaper||isCertificate">
+                            <label class="item item-input" >
+                                <span class="input-label" style="max-width: 100px;">*收件人：</span>
+                                <input type="text" ng-model="addr.recipients" name="userNames" ng-minlength="2" ng-maxlength="15" ng-pattern="/^[\u4E00-\u9FA5A-Za-z]+$/" required placeholder="请输入收件人姓名！" >
+                            </label>
+                        </li>
+                        <!--<li>
+                            <div ng-if="registerForm.userNames.$touched">
+                                <div class="verify" ng-show="registerForm.userNames.$error.maxlength">*不能大于15个字符</div>
+                                <div class="verify" ng-show="registerForm.userNames.$error.minlength||registerForm.userNames.$error.required" ng-if="!(registerForm.userNames.$error.pattern)">*不能少于2个字符</div>
+                                <div class="verify" ng-show="registerForm.userNames.$error.pattern">*只能输入中文或者英文的姓名</div>
+                            </div>
+                            <div class="verify" ng-show="registerForm.userNames.$error.required && registerForm.userNames.$dirty">收件人不能为空</div>
+                        </li>-->
+                        <li class="item" style="padding: 0;" ng-if="ispepers||ispepers2" ng-show="isPaper||isCertificate">
+                            <label class="item item-input" >
+                                <span class="input-label" style="max-width: 100px;">*收件人手机号：</span>
+                                <input type="tel"  ng-model="addr.recipientsMobile"  placeholder="请输入收件人手机号！" required ng-pattern="/^1[34578]\d{9}$/" name="mobiles"  ng-minlength="11" ng-maxlength="11" >
+                            </label>
+                        </li>
+                        <!--<li class="verify"  ng-show="registerForm.mobiles.$invalid && registerForm.mobiles.$dirty">格式有误！</li>-->
+
+                        <li class="item" style="padding: 0;" ng-if="ispepers||ispepers2" ng-show="isPaper||isCertificate">
+                            <label class="item item-input item-stacked-label">
+                                <span class="input-label" style="max-width: 100px;">*收件人地址：</span>
+                                <input type="text"  ng-model="addr.recipientsAddress" ng-pattern="/^[A-Za-z0-9]|[\u4E00-\u9FA5]+$/" name="userNameAdd" ng-minlength="5" ng-maxlength="60" required placeholder="请输入至少5位的收件人地址！" >
+                            </label>
+                        </li>
+                       <!-- <li class="">
+                            <div ng-if="registerForm.userNameAdd.$touched">
+                                <div class="verify" ng-show="registerForm.userNameAdd.$error.pattern">
+                                    *不能存在非法字符！
+                                </div>
+                                <div class="verify" ng-if="!(registerForm.userNameAdd.$error.pattern)" ng-show="registerForm.userNameAdd.$error.minlength||registerForm.userNameAdd.$error.required" >
+                                    *收件地址最少5个字！
+                                </div>
+                                <div class="verify" ng-show="registerForm.userNameAdd.$error.maxlength">
+                                    *收件地址最多不能超过60个字！
+                                </div>
+                                <div class="verify" ng-show="registerForm.userNameAdd.$dirty && registerForm.userNameAdd.$error.required">
+                                    *收件地址不能为空！
+                                </div>
+                            </div>
+                        </li>-->
+                        <li class="item shouli" style="padding: 0;" ng-if="admissible">
+                            <div style="padding: 10px 0px 10px 16px;"> *参保地：</div>
+                            <div class="item item-input item-select "  data-tap-disabled='true'>
+                                <div class="input-label" style="visibility: hidden">
+                                    *受理机构：
+                                </div>
+                                <select ng-model="d.Row1" class="selects itemselects">
+                                    <option value="" selected>请选择</option>
+                                    <option value="3">南庄镇</option>
+                                    <option value="4">石湾镇街道</option>
+                                    <option value="5">张槎街道</option>
+                                    <option value="6">祖庙街道</option>
+                                </select>
+                            </div>
+                        </li>
+
+                        <li ng-if="_itemId =='3'" ng-include="'tpl/table/userProve.html'"></li>
+
+                        <li ng-if="_itemId =='6'" ng-include="'tpl/table/fertility.html'"></li>
+
+                        <li ng-if="_itemId =='12'" ng-include="'tpl/table/socialOut.html'"></li>
+
+                        <li ng-if="_itemId =='7'" ng-include="'tpl/table/handicapped.html'"></li>
+
+                        <li ng-if="_itemId =='11'" ng-include="'tpl/table/endowment.html'"></li>
+
+                        <li ng-if="_itemId =='15'" ng-include="'tpl/table/familyPlanning.html'"></li>
+
+                        <li ng-if="_itemId =='18'" ng-include="'tpl/table/Inductrial.html'"></li>
+
+                        <li ng-if="_itemId =='9'" ng-include="'tpl/table/singleton.html'"></li>
+
+                        <li ng-if="_itemId =='19'" ng-include="'tpl/table/toBeLaidOff.html'"></li>
+
+                        <li ng-if="_itemId =='21'" ng-include="'tpl/table/disabilitiesr.html'"></li>
+                        <li ng-if="_itemId =='1'" ng-include="'tpl/table/cataract.html'"></li>
+                        <li ng-if="_itemId =='5'" ng-include="'tpl/table/cataract.html'"></li>
+                    </ul>
+                    <div style="margin: -5px 0 10px 15px;color:red" ng-if="TMD">提示：网上申请只查询近3个月的医保到账情况。</div>
+                    <div class="btn" style="margin-top: 45px;padding-bottom: 10px;" ng-if="hasTable">
+                        <a  class="button button-block btnBg"  ng-click="getUp()"
+                      >{{submit}}</a>
+                        <a href="#/On-line" class="button button-block btnBg fff">在线咨询</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </ion-content>
+
+
+</ion-view>

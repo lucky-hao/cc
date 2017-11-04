@@ -1,0 +1,154 @@
+<li style="padding: 0 0 0 16px;">
+    <h4>业务表单信息</h4>
+</li>
+<li class="item" style="padding: 0;" ng-if="security">
+    <label class="item item-input item-stacked-label" >
+        <span class="input-label" style="max-width: 100px;display: block;margin-bottom: 8px;">*户籍地址：</span>
+        <p class="ng-list" style="width:100%;">{{table.register}}</p>
+        <!--<input type="text" name="registeradds"  ng-maxlength="60" ng-minlength="5" ng-pattern="/^([0-9]|[\u4E00-\u9FA5])+$/" required ng-model="table.register" placeholder="请输入至少5位的户籍地址！">-->
+    </label>
+</li>
+
+<li class="item" style="padding: 0;" ng-if="security">
+    <label class="item item-input item-stacked-label" >
+        <!--<input type="tel" name="postalCodes" ng-pattern="/^[0-9]+$/" required ng-maxlength="6" ng-minlength="6"  ng-model="table.postalCode" placeholder="请输入户籍邮政编码！">-->
+        <span class="input-label" style="max-width: 100px;display: block;margin-bottom: 8px;">*户籍邮政编码：</span>
+        <p class="ng-list" style="width:100%;">{{table.postalCode}}</p>
+    </label>
+</li>
+
+<li class="item" style="padding: 0;" ng-if="security">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label"   style="max-width: 100px;">*联系邮政编码：</span>
+        <input type="tel" name="contactCodes" ng-pattern="/^[0-9]+$/" required ng-maxlength="6" ng-minlength="6" ng-model="table.contactCode" placeholder="请输入联系地址邮政编码！">
+    </label>
+</li>
+
+<li class="item" style="padding: 0;" ng-if="security">
+    <label class="item item-input item-stacked-label" >
+        <span class="input-label" style="max-width: 100px;">*联系地址：</span>
+        <input type="text" name="userAddress" ng-pattern="/^([0-9]|[\u4E00-\u9FA5])+$/" ng-minlength="5" maxlength="60" required ng-model="table.securityAddress" placeholder="请输入至少5位的联系地址！">
+    </label>
+</li>
+
+
+<li class="item" style="border: none;margin-top:15px;padding:0" ng-if="security">
+    <div style="padding: 10px 0px 10px 16px;"> *户籍类型：</div>
+    <div class="item item-input item-select "  data-tap-disabled='true'>
+        <div class="input-label" style="visibility: hidden">
+            *：
+        </div>
+        <select ng-model="table.registerTypes" class="selects itemselects">
+            <option value="" selected>请选择</option>
+            <option value="居民">居民</option>
+            <option value="农业">农业</option>
+            <option value="非农业">非农业</option>
+        </select>
+    </div>
+</li>
+
+<li  style="padding: 0 0 0 16px;margin-top: -5px" ng-if="security">
+    <h4><span>申请转移项目</span><span style="font-size: 14px;color: red;">（跨省不能转出失业保险）可多选</span></h4>
+</li>
+<ion-list ng-if="security">
+    <ion-checkbox ng-model="table.provides2" ng-checked="newprovides222">职工基本养老保险</ion-checkbox>
+    <ion-checkbox ng-model="table.provides1" ng-checked="newprovides111">职工基本医疗保险</ion-checkbox>
+    <ion-checkbox ng-model="table.provides3" ng-checked="newprovides333">失业保险</ion-checkbox>
+</ion-list>
+
+<li class="item" style="border: none;" ng-if="security">
+    <span>*职工基本医疗个账处理方式：</span>
+</li>
+<ion-list ng-if="security" >
+    <ion-radio name="outBack" ng-model="table.outBack" value="转出">退回基本医疗个账</ion-radio>
+</ion-list>
+
+
+<li class="item shouli" style="padding: 0;" ng-if="security">
+    <div style="padding: 10px 0px 10px 16px;"> *原参保地经办机构名称：</div>
+    <div class="item item-input item-select "  data-tap-disabled='true'>
+        <div class="input-label" style="visibility: hidden">
+            *：
+        </div>
+        <select  ng-model="table.oldsecurity" class="selects itemselects" ng-options="item.organizationName for item in objs" ng-init="table.oldsecurity = table.oldsecurity || objs[0]">
+            <option value="" selected>请选择</option>
+        </select>
+    </div>
+</li>
+
+<li class="item " style="padding: 0;" ng-if="security">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">*原参保地社保经办机构行政区域代码：</span>
+        <input type="tel" name="Code" ng-pattern="/^[0-9]+$/" required ng-model="table.newsecurity" placeholder="请输入原参保地社保经办机构行政区域代码">
+    </label>
+</li>
+
+<!--<li>
+    <div class="verify" ng-show="registerForm.Code.$error.pattern">
+        *只能输入数字！
+    </div>
+    <div class="verify" ng-show="registerForm.Code.$error.required && registerForm.Code.$dirty">
+        *内容不能为空！
+    </div>
+</li>-->
+
+<li class="item" style="padding: 0;margin-top: 15px" ng-if="security" >
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">原参保地经办机构地址：</span>
+        <input type="text" name="oldcurityAdd" ng-minlength="5" ng-maxlength="60" ng-pattern="/^[A-Za-z0-9]|[\u4E00-\u9FA5]+$/"  ng-model="table.oldsecurityAddr" placeholder="请输入至少5位的原参保地经办机构地址：">
+    </label>
+</li>
+<!--<li>
+    <div ng-if="registerForm.oldcurityAdd.$touched">
+        <div class="verify" ng-show="registerForm.oldcurityAdd.$error.pattern">
+            *不能存在非法字符，请重新输入！
+        </div>
+        <div class="verify" ng-if="!(registerForm.oldcurityAdd.$error.pattern)" ng-show="registerForm.oldcurityAdd.$error.minlength || registerForm.oldcurityAdd.$error.required" >
+            *地址最少5个字！
+        </div>
+        <div class="verify" ng-show="registerForm.oldcurityAdd.$error.maxlength">
+            *地址最多不能超过60个字！
+        </div>
+    </div>
+</li>-->
+
+<li class="item " style="padding: 0;" ng-if="security">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">*原参保地经办机构邮编：</span>
+        <input type="tel" name="Postcode" required ng-pattern="/^[0-9]+$/" ng-minlength="6" ng-maxlength="6" ng-model="table.oldsecurityPostcode" placeholder="请输入原参保地经办机构邮编">
+    </label>
+</li>
+<!--<li>
+    <div class="verify" ng-show="registerForm.Postcode.$error.pattern">
+        *只能输入数字！
+    </div>
+    <div class="verify" ng-show="registerForm.Postcode.$error.required && registerForm.Postcode.$dirty">
+        *内容不能为空！
+    </div>
+    <div class="verify" ng-if="!(registerForm.Postcode.$error.pattern)" ng-show="registerForm.Postcode.$error.minlength||registerForm.Postcode.$error.maxlength">
+        *请输入6位机构邮编！
+    </div>
+</li>-->
+<li class="item " style="padding: 0;margin-top: 15px" ng-if="security">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">*现参保地社保机构名称：</span>
+        <input type="text" name="rityName" required ng-maxlength="60" ng-pattern="/^[\u4e00-\u9fa5]|[\（\）\《\》\——\；\，\。\,\.\“\”\<\>\！\?\？]+$/" ng-model="table.newsecurityName" placeholder="请输入现参保地社保机构">
+    </label>
+</li>
+<!--<li>
+    <div class="verify" ng-show="registerForm.rityName.$error.pattern">
+        *机构内容不能包含非法字符！
+    </div>
+    <div class="verify" ng-show="registerForm.rityName.$error.maxlength">
+        *内容不能超过60个字
+    </div>
+    <div class="verify" ng-show="registerForm.rityName.$error.required && registerForm.rityName.$dirty">
+        *内容不能为空！
+    </div>
+</li>-->
+
+<li class="btn" style="margin-top: 45px;padding-bottom: 10px;">
+    <a  class="button button-block btnBg" ng-if="!showBtn" ng-click="socialOut()"
+            >{{submit}}</a>
+    <a href="#/On-line" class="button button-block btnBg fff">在线咨询</a>
+</li>

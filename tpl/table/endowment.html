@@ -1,0 +1,30 @@
+<!--表-->
+<li style="padding: 0 0 0 16px;">
+    <h4>业务表单信息</h4>
+</li>
+
+<li class="item" style="padding: 0;border: none;margin-top: 10px">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">*证明开具原因：</span>
+        <textarea name="textareas" required ng-pattern="/^([\u4e00-\u9fa5]|[\（\）\《\》\——\；\，\。\,\.\“\”\<\>\！\?\？])+$/" placeholder="请输入开具原因" ng-minlength="2" ng-maxlength="120" rows="10" ng-model="table.textcontent"></textarea>
+    </label>
+</li>
+<!--<li>
+    <div ng-if="registerForm.textareas.$touched">
+        <div class="verify" ng-show="registerForm.textareas.$error.pattern">
+            *存在非法字符，请重新输入！
+        </div>
+        <div class="verify" ng-if="!(registerForm.textareas.$error.pattern)" ng-show="registerForm.textareas.$error.minlength||registerForm.textareas.$error.required">
+            *证明开具原因不能少于2字！
+        </div>
+        <div class="verify" ng-show="registerForm.textareas.$error.maxlength">
+            *证明开具原因不能多于120字！
+        </div>
+    </div>
+</li>-->
+
+<li class="btn" style="margin-top: 45px;padding-bottom: 10px;">
+    <a  class="button button-block btnBg" ng-click="endowment()"
+            >{{submit}}</a>
+    <a href="#/On-line" class="button button-block btnBg fff">在线咨询</a>
+</li>

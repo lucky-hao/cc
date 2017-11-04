@@ -1,0 +1,81 @@
+<!--表-->
+<li style="padding: 0 0 0 16px;">
+    <h4>业务表单信息</h4>
+</li>
+<li class="item"><span class="ng-list">*姓名：</span>{{userName}} </li>
+<li class="item"><span class="ng-list">*身份证：</span>{{idCard}} </li>
+
+<ion-list>
+    <ion-radio name="marriage2" ng-model="table.marriagepeple" value="男">男</ion-radio>
+    <ion-radio name="marriage2" ng-model="table.marriagepeple" value="女">女</ion-radio>
+</ion-list>
+
+<li style="margin-top: 10px">
+    <label class="item item-input">
+        <span class="input-label" style="max-width: 100px;">*联系电话：</span>
+        <input type="tel" name="marrPhone" ng-minlength="11" ng-maxlength="11"  ng-pattern="/^1[34578]\d{9}$/" required ng-model="table.marrPhone" placeholder="请输入联系电话！">
+    </label>
+</li>
+<!--<li class="verify"  ng-show="registerForm.marrPhone.$invalid && registerForm.marrPhone.$dirty">格式有误！</li>-->
+
+<li class="item" style="padding: 0;" ng-if="security">
+    <label class="item item-input">
+        <span class="input-label"   style="max-width: 100px;">*邮政编码：</span>
+        <input type="tel" name="contactCodes" ng-pattern="/^[0-9]+$/" required ng-maxlength="6" ng-minlength="6" ng-model="table.contactCode" placeholder="请输入邮政编码！">
+    </label>
+</li>
+<!--<li>
+    <div class="verify" ng-show="registerForm.contactCodes.$error.pattern">
+        *只能输入数字！
+    </div>
+    <div class="verify" ng-show="registerForm.contactCodes.$dirty && registerForm.contactCodes.$error.required">
+        *内容不能为空！
+    </div>
+    <div class="verify" ng-if="!(registerForm.contactCodes.$error.pattern)" ng-show="registerForm.contactCodes.$error.minlength||registerForm.contactCodes.$error.maxlength">
+        *请输入6位联系邮政编码！
+    </div>
+</li>-->
+
+<li class="item" style="padding: 0;">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label" style="max-width: 100px;">*现居住地址：</span>
+        <input type="text" name="userAddress" ng-pattern="/^[A-Za-z0-9]|[\u4E00-\u9FA5]+$/" ng-minlength="5" maxlength="60" required  ng-model="table.securityAddress" placeholder="请输入至少5位的联系地址！">
+    </label>
+</li>
+<!--<li>
+    <div ng-if="registerForm.userAddress.$touched">
+        <div class="verify" ng-show="registerForm.userAddress.$error.pattern">
+            *不能存在非法字符，请重新输入！
+        </div>
+        <div class="verify" ng-if="!(registerForm.userAddress.$error.pattern)" ng-show="registerForm.userAddress.$error.minlength || registerForm.userAddress.$error.required" >
+            *联系地址最少5个字！
+        </div>
+        <div class="verify" ng-show="registerForm.userAddress.$error.maxlength">
+            *联系地址最多不能超过60个字！
+        </div>
+    </div>
+</li>-->
+
+<li>
+    <label class="item item-input">
+        <span class="input-label" style="max-width: 100px;">出生日期：</span>
+        <input type="tel" id="date-selector-input" name="marrchildrenDatas"  ng-model="table.marrchildrenDatas" placeholder="时间格式：2000-01-01">
+    </label>
+</li>
+<!--<li class="item shouli" style="padding: 0;" >
+    <div style="padding: 10px 0px 10px 16px;"> *参保地：</div>
+    <div class="item item-input item-select "  data-tap-disabled='true'>
+        <div class="input-label" style="visibility: hidden">
+            *：
+        </div>
+        <select  ng-model="table.oldsecurity" class="selects itemselects" ng-options="item.organizationName for item in objs">
+            <option value="" selected>请选择</option>
+        </select>
+    </div>
+</li>-->
+
+<li class="btn" style="margin-top: 45px;padding-bottom: 10px;">
+    <a  class="button button-block btnBg" ng-click="Inductrial()"
+    >{{submit}}</a>
+    <a href="#/On-line" class="button button-block btnBg fff">在线咨询</a>
+</li>

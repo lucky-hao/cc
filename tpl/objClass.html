@@ -1,0 +1,46 @@
+<ion-view title="网上办事">
+	<ion-content class='has-header' has-bouncing="false">
+		<div class="main" style="height: 100%;">
+			<div class="objClass" style="height: 100%;">
+				<div class="content" style="height: 100%;">
+					<!--<div class="card">
+                        <div class="item item-divider" style="font-size: 20px">
+                            请选择对象类别
+                        </div>
+                        <div class="item item-text-wrap">
+                            <div ng-repeat='item in list'>
+                                <label for="">
+                                    <span ng-show='false'>{{d.radios}}</span>
+                                        <input type="radio" name='radio'  ng-value="{{item.id}}" ng-model='d.radios' ng-click="getObjId(item.objId)"/>{{item.sceneName}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>-->
+					<ul class="list">
+						<li class="item item-divider">
+							<i></i>请选择对象类别
+						</li>
+						<!--<li class="item"  ng-repeat='item in list' style="padding: 5px 10px;">
+                            <div>
+                                <label >
+                                    <input ng-model='d.radios' ng-value="{{item.id}}" name='radio' type="radio"/>{{item.sceneName}}
+                                </label>
+                            </div>
+                        </li>-->
+						<ion-list>
+							<ion-radio name="radios"  ng-model="d.radios" ng-value="item.id" ng-repeat='item in list'>{{item.sceneName}}</ion-radio>
+						</ion-list>
+					</ul>
+					<!--<ion-list ng-repeat='item in list'>
+                        <ion-radio ng-model='d.radios' ng-value="{{item.id}}" name='radio' ng-click="getObjId(item.objId)">{{item.sceneName}}</ion-radio>
+                    </ion-list>-->
+					<div class="btn" style=" position: fixed;bottom: 0;margin: 0;width: 100%">
+						<!--<button class="button btnBg" ng-disabled='!d.radios' ng-click='jump()'>下一步</button>-->
+						<a href="javascript:;" class="button button-block btnBg" ng-disabled='!d.radios' ng-click='jump()'>下一步</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

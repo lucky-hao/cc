@@ -1,0 +1,47 @@
+<li class="item" style="padding: 0;">
+    <label class="item item-input item-stacked-label">
+        <span class="input-label" style="max-width: 100px;">*开户行：</span>
+        <input type="text" name="Openingbank" ng-pattern="/^[\u4E00-\u9FA5]+$/"  required  ng-model="table.Openingbank" placeholder="请输入开户行">
+    </label>
+</li>
+<!--<li>
+    <div ng-if="registerForm.Openingbank.$touched">
+        <div class="verify" ng-show="registerForm.Openingbank.$error.pattern">
+            *不能含有非法字符！
+        </div>
+        <div class="verify" ng-show="registerForm.Openingbank.$error.required">
+            *内容不能为空！
+        </div>
+    </div>
+</li>-->
+
+<li class="item" style="padding: 0;">
+    <label class="item item-input item-stacked-label" >
+        <span class="input-label" style="max-width: 100px;">*银行账号：</span>
+        <input type="tel"  ng-model="table.bankAccount"  placeholder="请输入银行账号" required ng-pattern="/^[0-9]+$/" name="bankAccount"  ng-maxlength="30" >
+    </label>
+</li>
+<!--<li>
+    <div  ng-if="registerForm.bankAccount.$touched">
+        <div class="verify" ng-show="registerForm.bankAccount.$error.pattern||registerForm.bankAccount.$error.maxlength">
+            *请输入正确的银行账号！
+        </div>
+        <div class="verify" ng-show="registerForm.bankAccount.$error.required">
+            *内容不能为空！
+        </div>
+    </div>
+</li>-->
+
+
+<!--<li class="btn" style="margin-top: 45px;padding-bottom: 10px;">
+    <a  class="button button-block btnBg" ng-if="isPaper||isCertificate"  ng-click="submitUserProve()"
+        ng-disabled="registerForm.Openingbank.$invalid
+                ||registerForm.bankAccount.$invalid
+                ||registerForm.userNameAdd.$invalid
+                ||registerForm.mobiles.$invalid
+                ||registerForm.userNames.$invalid
+            "
+    >{{submit}}</a>
+    <a  class="button button-block btnBg"  ng-click="submitUserProve()" ng-if="!isPaper&&!isCertificate">{{submit}}</a>
+    <a href="#/On-line" class="button button-block btnBg fff">在线咨询</a>
+</li>-->

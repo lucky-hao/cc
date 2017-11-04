@@ -1,0 +1,29 @@
+<ion-header-bar>
+    <h1 class="title"><a href="javascript:" ng-click='aJump()' class="back" ></a>参保证明填表</h1>
+</ion-header-bar>
+
+<ion-content has-bouncing="false">
+    <div class="main scroll-content">
+        <div class="onLineManage prove" style="height:100%;background-color: #f1f1f1">
+            <form name="" style="height:100%;">
+                <ul class="list" style="padding: 10px;">
+                    <li class="item" style="border: none;background-color: #f1f1f1;padding-left: 0;">
+                        <span>事项名称：</span><span>开具社会保险参保证明申请书</span>
+                    </li>
+                    <li class="item" style="padding: 0;background-color: #f1f1f1;border: none;border-top:1px dashed #000" >
+                        <label class="item item-input item-stacked-label" style="padding-left: 0">
+                            <span class="input-label" style="padding: 10px 0">开具原因：</span>
+                            <textarea placeholder="请输入申请开具社会保险参保证明开具原因" rows="10"></textarea>
+                        </label>
+                    </li>
+                </ul>
+
+                <div class="btn" style="margin-top: 30px"><!--(!d.Row)&&(!datas.hasPhone)&&(!datas.address)-->
+                    <button class="button button-block btnBg" ng-click="getUp()" ng-disabled=''>提交</button>
+                    <a href="#/On-line" class="button button-block btnBg fff">在线咨询</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</ion-content>
+

@@ -1,0 +1,13 @@
+<li style="padding: 0 0 0 16px;">
+    <h4>业务表单信息</h4>
+</li>
+<ion-list>
+    <ion-radio ng-repeat="item in arrs" name="items" ng-value="item.id" ng-model="table.items">
+        {{item.professionName}}({{item.level}}) &nbsp;&nbsp;({{item.trainingTime}})
+    </ion-radio>
+</ion-list>
+
+<li class="btn" style="margin-top: 45px;padding-bottom: 10px;">
+    <a  class="button button-block btnBg" ng-click="toBeLaidOff()">{{submit}}</a>
+    <a href="#/On-line" class="button button-block btnBg fff">在线咨询</a>
+</li>

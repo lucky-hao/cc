@@ -1,0 +1,150 @@
+<ion-header-bar>
+    <h1 class="title"><a href="javascript:" ng-click='aJump()' class="back" ></a>社会保险关系转移接续</h1>
+    <!--<ion-nav-bar class="bar-assertive">
+        <ion-nav-back-button class="button-icon ion-ios-arrow-left">
+            返回
+        </ion-nav-back-button>
+    </ion-nav-bar>-->
+</ion-header-bar>
+
+<ion-content has-bouncing="false">
+    <div class="main">
+        <div class="onLineManage onLineManageTable">
+            <form name="">
+                <ul class="list ">
+                    <!--<li class="item"><span class="ng-list">*事项名称：</span> {{itemName}}</li>
+                    <li class="item"><span class="ng-list">*用户名：</span>{{userName}} </li>
+                    <li class="item"><span class="ng-list">*身份证：</span>{{idCard}} </li>
+                    <li class="item"><span class="ng-list">*手机号：</span>{{mobile}}</li>-->
+                    <li class="item" style="padding: 0;">
+                        <label class="item item-input" >
+                            <span class="input-label" style="max-width: 100px;">*个人社保号：</span>
+                            <input type="text"  placeholder="请输入个人社保号！">
+                        </label>
+                    </li>
+                    <li class="item" style="padding: 0;">
+                        <label class="item item-input" >
+                            <span class="input-label" style="max-width: 100px;">*姓名：</span>
+                            <input type="text"  placeholder="请输入姓名！">
+                        </label>
+                    </li>
+                    <li class="item" style="padding: 0;">
+                        <label class="item item-input" >
+                            <span class="input-label" style="max-width: 100px;">*身份证号：</span>
+                            <input type="text"  placeholder="请输入身份证号！">
+                        </label>
+                    </li>
+                    <li class="item" style="padding: 0;">
+                        <label class="item item-input" >
+                            <span class="input-label" style="max-width: 100px;">*户籍地址：</span>
+                            <input type="text"  placeholder="请输入户籍地址！">
+                        </label>
+                    </li>
+                    <li class="item" style="padding: 0;">
+                        <label class="item item-input" >
+                            <span class="input-label" style="max-width: 100px;">*邮政编码：</span>
+                            <input type="tel"  placeholder="请输入邮政编码！">
+                        </label>
+                    </li>
+
+                    <li class="item" style="padding: 10px 0px 10px 16px;">
+                        <span>*户籍类型：</span>
+                        <label for="">
+                            <input type="radio" name="peopleType1"  style=" margin: 5px;" value="1"/>居民
+                        </label>
+                        <label for="">
+                            <input type="radio" name="peopleType1"  style=" margin: 5px;" value="2"/>农业
+                        </label>
+                        <label for="">
+                            <input type="radio" name="peopleType1"  style=" margin: 5px;" value="2"/>非农业
+                        </label>
+                    </li>
+                    <li  style="padding: 5px 0px 5px 16px;">
+                        <h4>申请转移项目</h4>
+                    </li>
+                    <li class="item " style="padding: 10px 0px 10px 16px;">
+                        <span>*职工基本养老保险：</span>
+                        <label for="">
+                            <input type="radio" name="provide"  style=" margin: 5px;" value="1"/>转出
+                        </label>
+                        <label for="">
+                            <input type="radio" name="provide"  style=" margin: 5px;" value="2"/>转入
+                        </label>
+                    </li>
+                    <li class="item" style="padding: 10px 0px 10px 16px;">
+                        <span>*职工基本医疗保险：</span>
+                        <label for="">
+                            <input type="radio" name="treatment"  style=" margin: 5px;" value="1"/>转出
+                        </label>
+                        <label for="">
+                            <input type="radio" name="treatment"  style=" margin: 5px;" value="2"/>转入
+                        </label>
+                    </li>
+                    <li class="item magr" style="padding: 10px 0px 10px 16px;">
+                        <span>*失业保险：</span>
+                        <label for="">
+                            <input type="radio" name="unemployment"  style=" margin: 5px;" value="1"/>转出
+                        </label>
+                        <label for="">
+                            <input type="radio" name="unemployment"  style=" margin: 5px;" value="2"/>转入
+                        </label>
+                    </li>
+
+                    <li class="item magr" style="padding: 10px 0px 10px 16px;">
+                        <span>*职工基本医疗个账处理方式：</span>
+                        <p style="margin-top: 10px">
+                            <label for="">
+                                <input type="radio" name="outBack"  style=" margin: 5px;" value="1"/>退回基本医疗个账
+                            </label>
+                        </p>
+                        <p>
+                            <label for="">
+                                <input type="radio" name="outBack"  style=" margin: 5px;" value="2"/>转移基本医疗个账（未配账部分）
+                            </label>
+                        </p>
+
+                    </li>
+
+                    <li class="item" style="padding: 0;" >
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">原参保地经办机构名称：</span>
+                            <input type="text" placeholder="请输入原参保地经办机构名称">
+                        </label>
+                    </li>
+                    <li class="item magr" style="padding: 0;" >
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">原参保地社保经办机构行政区域代码：</span>
+                            <input type="text" placeholder="请输入原参保地社保经办机构行政区域代码">
+                        </label>
+                    </li>
+
+                    <li class="item" style="padding: 0;" >
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">原参保地经办机构地址：</span>
+                            <input type="text" placeholder="请输入原参保地经办机构地址：">
+                        </label>
+                    </li>
+                    <li class="item magr" style="padding: 0;" >
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">原参保地经办机构邮编：</span>
+                            <input type="text" placeholder="请输入原参保地经办机构邮编">
+                        </label>
+                    </li>
+                    <li class="item magr" style="padding: 0;" >
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">现参保地社保机构：</span>
+                            <input type="text" placeholder="请输入现参保地社保机构">
+                        </label>
+                    </li>
+
+                </ul>
+
+                <div class="btn" style="margin-top: 30px"><!--(!d.Row)&&(!datas.hasPhone)&&(!datas.address)-->
+                    <button class="button button-block btnBg" ng-click="getUp()" ng-disabled=''>提交</button>
+                    <a href="#/On-line" class="button button-block btnBg fff">在线咨询</a>
+                </div>
+            <!--</form>-->
+        </div>
+    </div>
+</ion-content>
+
